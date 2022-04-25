@@ -10,9 +10,17 @@ class AppCubit extends Cubit<AppState> {
   AppCubit() : super(const AppState());
 
   List<CoffeeCardInfo> shoppingCartList = [];
+  List<CoffeeCardInfo> favoriteCartList = [];
+  int totalPrice = 0;
 
   void addShoppingCartList(CoffeeCardInfo card) {
     shoppingCartList.add(card);
+    totalPrice += card.price ?? 0;
+    emit(state.copyWith(coffeeCardCount: shoppingCartList.length));
+  }
+
+  void addFavoriteCartList(CoffeeCardInfo card) {
+    favoriteCartList.add(card);
     emit(state.copyWith(coffeeCardCount: shoppingCartList.length));
   }
 

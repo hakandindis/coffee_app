@@ -7,21 +7,26 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 class CoffeeCard extends StatelessWidget {
   const CoffeeCard({
     Key? key,
+    required this.height,
+    required this.width,
     required this.coffeeCardInfo,
   }) : super(key: key);
 
   final CoffeeCardInfo coffeeCardInfo;
-
+  final double height;
+  final double width;
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const PagePadding.all(),
       child: Container(
-        width: 200,
+        height: height,
+        width: width,
         decoration: BoxDecoration(borderRadius: BorderRadius.circular(30), color: Colors.black38),
         child: Padding(
           padding: const PagePadding.all(),
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               ClipRRect(
