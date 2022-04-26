@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:bloc/bloc.dart';
 import 'package:coffee_app/feature/app/model/coffee_card_info.dart';
 import 'package:coffee_app/feature/route/route.dart';
@@ -21,7 +23,7 @@ class AppCubit extends Cubit<AppState> {
 
   void addFavoriteCartList(CoffeeCardInfo card) {
     favoriteCartList.add(card);
-    emit(state.copyWith(coffeeCardCount: shoppingCartList.length));
+    inspect(favoriteCartList);
   }
 
   void changePage(BuildContext context, int index) {
