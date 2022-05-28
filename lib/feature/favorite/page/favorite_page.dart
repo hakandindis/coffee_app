@@ -11,7 +11,7 @@ class FavoritePage extends StatelessWidget {
     return Scaffold(
       appBar: MainAppBar(),
       bottomNavigationBar: const MainNavigationBar(),
-      body: const FavoriteView(),
+      body: FavoriteView(),
     );
   }
 }
