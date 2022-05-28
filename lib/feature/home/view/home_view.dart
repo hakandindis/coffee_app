@@ -2,14 +2,11 @@
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:coffee_app/feature/app/model/coffee_card_info.dart';
-import 'package:coffee_app/feature/app/model/coffee_model.dart';
 import 'package:coffee_app/feature/home/widget/coffee_card.dart';
-import 'package:coffee_app/feature/home/widget/coffee_card_list.dart';
 import 'package:coffee_app/feature/home/widget/header_text.dart';
 import 'package:coffee_app/product/components/main_app_bar.dart';
 import 'package:coffee_app/product/components/main_navigation_bar.dart';
 import 'package:coffee_app/product/mock/mock_coffee_card_list.dart';
-import 'package:coffee_app/product/padding/page_padding.dart';
 import 'package:flutter/material.dart';
 
 class HomeView extends StatefulWidget {
@@ -52,7 +49,7 @@ class _HomeViewState extends State<HomeView> {
             SizedBox(height: 10),
             Expanded(
               child: ListView(
-                scrollDirection: Axis.horizontal,
+                scrollDirection: Axis.vertical,
                 children: snapshot.data!.docs.map((DocumentSnapshot document) {
                   Map<String, dynamic> data = document.data()! as Map<String, dynamic>;
                   return CoffeeCard(
