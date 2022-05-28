@@ -1,4 +1,4 @@
-import 'package:coffee_app/feature/drink/page/coffee_page.dart';
+import 'package:coffee_app/feature/drink/page/drink_page.dart';
 import 'package:coffee_app/feature/favorite/page/favorite_page.dart';
 import 'package:coffee_app/feature/home/page/home_page.dart';
 import 'package:coffee_app/feature/profile/page/profile_page.dart';

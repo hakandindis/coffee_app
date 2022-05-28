@@ -1,4 +1,4 @@
-import 'package:coffee_app/feature/drink/view/coffee_view.dart';
+import 'package:coffee_app/feature/drink/view/drink_view.dart';
 import 'package:flutter/material.dart';
 
 class DrinkPage extends StatefulWidget {

@@ -29,7 +29,7 @@ class AppCubit extends Cubit<AppState> {
   void changePage(BuildContext context, int index) {
     switch (index) {
       case 0:
-        Navigator.of(context).pushNamed(AppRoutes.homePage);
+        Navigator.of(context).pushNamed(AppRoutes.drinkPage);
         emit(state.copyWith(currentPageIndex: index));
         break;
       case 1:

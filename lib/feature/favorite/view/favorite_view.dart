@@ -9,12 +9,12 @@ import 'package:flutter/material.dart';
 
 class FavoriteView extends StatelessWidget {
   FavoriteView({Key? key}) : super(key: key);
-  final Stream<QuerySnapshot> _coffeeStream = FirebaseFirestore.instance.collection('favorites').snapshots();
+  final Stream<QuerySnapshot> _favoriteStream = FirebaseFirestore.instance.collection('favorites').snapshots();
 
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<QuerySnapshot>(
-      stream: _coffeeStream,
+      stream: _favoriteStream,
       builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
         if (snapshot.hasError) {
           return Text('Something went wrong');
