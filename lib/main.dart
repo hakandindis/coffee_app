@@ -33,7 +33,7 @@ class MyApp extends StatelessWidget {
           ),
         ),
         // home: HomePage(),
-        initialRoute: AppRoutes.homePage,
+        initialRoute: AppRoutes.coffeePage,
         routes: AppRoutes.route(),
       ),
     );
