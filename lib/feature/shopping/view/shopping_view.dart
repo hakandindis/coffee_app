@@ -12,6 +12,8 @@ class ShoppingView extends StatefulWidget {
 }
 
 class _ShoppingViewState extends State<ShoppingView> {
+  final ref = FirebaseFirestore.instance.collection("drinks");
+
   final Stream<QuerySnapshot> _stream =
       FirebaseFirestore.instance.collection("drinks").where("isAdd", isEqualTo: true).snapshots();
 
@@ -21,7 +23,7 @@ class _ShoppingViewState extends State<ShoppingView> {
       children: [
         const HeaderText(),
         const SizedBox(height: 10),
-        CustomList(stream: _stream),
+        CustomList(stream: _stream, ref: ref),
         Expanded(
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,

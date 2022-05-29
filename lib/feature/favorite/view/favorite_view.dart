@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 class FavoriteView extends StatelessWidget {
   FavoriteView({Key? key}) : super(key: key);
 
+  final ref = FirebaseFirestore.instance.collection("drinks");
   final Stream<QuerySnapshot> _favoriteStream =
       FirebaseFirestore.instance.collection("drinks").where("isFavorite", isEqualTo: true).snapshots();
 
@@ -17,7 +18,7 @@ class FavoriteView extends StatelessWidget {
       children: [
         HeaderText(),
         SizedBox(height: 10),
-        CustomList(stream: _favoriteStream),
+        CustomList(stream: _favoriteStream, ref: ref),
       ],
     );
   }

@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:coffee_app/feature/app/model/drink_model.dart';
 import 'package:coffee_app/product/padding/page_padding.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 part 'drink_image.dart';
@@ -9,7 +10,7 @@ part 'price_and_buy.dart';
 part 'name_description.dart';
 
 class DrinkCard extends StatelessWidget {
-  final CollectionReference<Map<String, dynamic>> favoritesRef = FirebaseFirestore.instance.collection("favorites");
+  final CollectionReference<Map<String, dynamic>> favoritesRef = FirebaseFirestore.instance.collection("drinks");
 
   DrinkCard({
     Key? key,
@@ -33,6 +34,28 @@ class DrinkCard extends StatelessWidget {
           children: [
             _DrinkImage(model: model),
             _InfoWidget(model: model, favoritesRef: favoritesRef),
+            Positioned(
+              top: 10,
+              right: 20,
+              child: InkWell(
+                onTap: () async {
+                  if (model.isFavorite ?? false) {
+                    await favoritesRef.doc(model.id).update({"isFavorite": false});
+                  } else {
+                    await favoritesRef.doc(model.id).update({"isFavorite": true});
+                  }
+                },
+                child: model.isFavorite ?? false
+                    ? Icon(
+                        CupertinoIcons.heart_fill,
+                        size: 40,
+                      )
+                    : Icon(
+                        CupertinoIcons.heart,
+                        size: 40,
+                      ),
+              ),
+            ),
           ],
         ),
       ),

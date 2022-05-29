@@ -21,8 +21,8 @@ class _PriceAndBuyWidget extends StatelessWidget {
         ),
         ElevatedButton(
           style: ElevatedButton.styleFrom(primary: Colors.orange),
-          onPressed: () {
-            favoritesRef.add(model.toJson(model));
+          onPressed: () async {
+            await favoritesRef.doc(model.id).update({"isAdd": true});
           },
           child: const Icon(Icons.add),
         ),
