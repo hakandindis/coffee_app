@@ -1,16 +1,18 @@
-// ignore_for_file: prefer_const_constructors
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:coffee_app/feature/custom/widget/custom_list.dart';
-import 'package:coffee_app/feature/favorite/widget/favorites_list.dart';
 import 'package:coffee_app/feature/home/widget/header_text.dart';
 import 'package:flutter/material.dart';
 
-class FavoriteView extends StatelessWidget {
-  FavoriteView({Key? key}) : super(key: key);
+class ShoppingView extends StatefulWidget {
+  const ShoppingView({Key? key}) : super(key: key);
 
+  @override
+  State<ShoppingView> createState() => _ShoppingViewState();
+}
+
+class _ShoppingViewState extends State<ShoppingView> {
   final Stream<QuerySnapshot> _favoriteStream =
-      FirebaseFirestore.instance.collection("drinks").where("isFavorite", isEqualTo: true).snapshots();
+      FirebaseFirestore.instance.collection("drinks").where("isAdd", isEqualTo: true).snapshots();
 
   @override
   Widget build(BuildContext context) {

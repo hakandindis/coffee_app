@@ -7,16 +7,15 @@ class _DrinkImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: Container(
-        decoration: BoxDecoration(
-          color: Colors.black,
-          borderRadius: BorderRadius.circular(50),
-          image: DecorationImage(
-            opacity: 0.5,
-            fit: BoxFit.cover,
-            image: AssetImage("assets/coffee/${model.imgName}.jpg"),
-          ),
+    return Container(
+      // height: 500,
+      decoration: BoxDecoration(
+        color: Colors.black,
+        borderRadius: BorderRadius.circular(50),
+        image: DecorationImage(
+          opacity: 0.5,
+          fit: BoxFit.cover,
+          image: AssetImage("assets/coffee/${model.imgName}.jpg"),
         ),
       ),
     );
