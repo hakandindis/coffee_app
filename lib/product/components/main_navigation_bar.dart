@@ -40,7 +40,7 @@ class MainNavigationBar extends StatelessWidget {
               ),
               label: "Shop",
             ),
-            const BottomNavigationBarItem(icon: Icon(CupertinoIcons.heart_fill), label: "Profile"),
+            const BottomNavigationBarItem(icon: Icon(CupertinoIcons.heart_fill), label: "favorite"),
             const BottomNavigationBarItem(icon: Icon(CupertinoIcons.profile_circled), label: "Profile"),
           ],
         );

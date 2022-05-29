@@ -33,7 +33,7 @@ class AppCubit extends Cubit<AppState> {
         emit(state.copyWith(currentPageIndex: index));
         break;
       case 1:
-        Navigator.of(context).pushNamed(AppRoutes.shopPage);
+        Navigator.of(context).pushNamed(AppRoutes.shoppingPage);
         emit(state.copyWith(currentPageIndex: index));
         break;
       case 2:

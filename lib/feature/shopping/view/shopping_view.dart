@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:coffee_app/feature/custom/widget/custom_list.dart';
 import 'package:coffee_app/feature/home/widget/header_text.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class ShoppingView extends StatefulWidget {
@@ -11,16 +12,31 @@ class ShoppingView extends StatefulWidget {
 }
 
 class _ShoppingViewState extends State<ShoppingView> {
-  final Stream<QuerySnapshot> _favoriteStream =
+  final Stream<QuerySnapshot> _stream =
       FirebaseFirestore.instance.collection("drinks").where("isAdd", isEqualTo: true).snapshots();
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        HeaderText(),
-        SizedBox(height: 10),
-        CustomList(stream: _favoriteStream),
+        const HeaderText(),
+        const SizedBox(height: 10),
+        CustomList(stream: _stream),
+        Expanded(
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(right: 20),
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(primary: Colors.orange),
+                  onPressed: () {},
+                  child: const Icon(CupertinoIcons.arrow_right),
+                ),
+              ),
+            ],
+          ),
+        ),
       ],
     );
   }
