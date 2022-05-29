@@ -4,12 +4,15 @@ part 'drink_model.g.dart';
 
 @JsonSerializable()
 class DrinkModel {
+  String? id;
   String? name;
-  String? description;
   String? imgName;
+  String? description;
   int? price;
+  String? isFavorite;
+  String? isAdd;
 
-  DrinkModel({this.name, this.description, this.price, this.imgName});
+  DrinkModel({this.id, this.name, this.imgName, this.description, this.price, this.isFavorite, this.isAdd});
 
   factory DrinkModel.fromJson(Map<String, dynamic> json) {
     return _$DrinkModelFromJson(json);

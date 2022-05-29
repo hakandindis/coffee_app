@@ -7,16 +7,22 @@ part of 'drink_model.dart';
 // **************************************************************************
 
 DrinkModel _$DrinkModelFromJson(Map<String, dynamic> json) => DrinkModel(
+      id: json['id'] as String?,
       name: json['name'] as String?,
+      imgName: json['imgName'] as String?,
       description: json['description'] as String?,
       price: json['price'] as int?,
-      imgName: json['imgName'] as String?,
+      isFavorite: json['isFavorite'] as String?,
+      isAdd: json['isAdd'] as String?,
     );
 
 Map<String, dynamic> _$DrinkModelToJson(DrinkModel instance) =>
     <String, dynamic>{
+      'id': instance.id,
       'name': instance.name,
-      'description': instance.description,
       'imgName': instance.imgName,
+      'description': instance.description,
       'price': instance.price,
+      'isFavorite': instance.isFavorite,
+      'isAdd': instance.isAdd,
     };
