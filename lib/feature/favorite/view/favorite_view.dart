@@ -8,7 +8,7 @@ import 'package:flutter/material.dart';
 class FavoriteView extends StatelessWidget {
   FavoriteView({Key? key}) : super(key: key);
   final Stream<QuerySnapshot> _favoriteStream =
-      FirebaseFirestore.instance.collection("coffees").where("price", isGreaterThan: 1).snapshots();
+      FirebaseFirestore.instance.collection("drinks").where("price", isGreaterThan: 1).snapshots();
 
   @override
   Widget build(BuildContext context) {

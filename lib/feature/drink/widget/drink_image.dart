@@ -1,10 +1,7 @@
 part of 'drink_card.dart';
 
 class _DrinkImage extends StatelessWidget {
-  const _DrinkImage({
-    Key? key,
-    required this.model,
-  }) : super(key: key);
+  const _DrinkImage({Key? key, required this.model}) : super(key: key);
 
   final DrinkModel model;
 

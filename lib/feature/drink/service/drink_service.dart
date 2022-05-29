@@ -10,7 +10,7 @@ class CoffeeService {
   }
 
   List<DrinkModel> getAllCoffees() {
-    List<DrinkModel> drinkList;
+    //List<DrinkModel> drinkList;
 
     //Default return value
     return [DrinkModel(name: "", description: "", imgName: "", price: 15)];

@@ -18,7 +18,7 @@ class _NameAndDescriptionTexts extends StatelessWidget {
           model.name ?? "",
           style: Theme.of(context).textTheme.headline6?.copyWith(fontSize: 35),
         ),
-        SizedBox(height: 10),
+        const SizedBox(height: 10),
         Text(
           model.description ?? "",
           style: Theme.of(context).textTheme.subtitle2?.copyWith(
