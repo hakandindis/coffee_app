@@ -15,7 +15,7 @@ class DrinkView extends StatefulWidget {
 }
 
 class _DrinkViewState extends State<DrinkView> {
-  final Stream<QuerySnapshot> _drinkStream = FirebaseFirestore.instance.collection('coffees').snapshots();
+  final Stream<QuerySnapshot> _drinkStream = FirebaseFirestore.instance.collection('drinks').snapshots();
 
   @override
   Widget build(BuildContext context) {

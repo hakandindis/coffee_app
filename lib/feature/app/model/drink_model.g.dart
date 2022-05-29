@@ -12,8 +12,9 @@ DrinkModel _$DrinkModelFromJson(Map<String, dynamic> json) => DrinkModel(
       imgName: json['imgName'] as String?,
       description: json['description'] as String?,
       price: json['price'] as int?,
-      isFavorite: json['isFavorite'] as String?,
-      isAdd: json['isAdd'] as String?,
+      isFavorite: json['isFavorite'] as bool?,
+      isAdd: json['isAdd'] as bool?,
+      category: json['category'] as String?,
     );
 
 Map<String, dynamic> _$DrinkModelToJson(DrinkModel instance) =>
@@ -25,4 +26,5 @@ Map<String, dynamic> _$DrinkModelToJson(DrinkModel instance) =>
       'price': instance.price,
       'isFavorite': instance.isFavorite,
       'isAdd': instance.isAdd,
+      'category': instance.category,
     };

@@ -1,6 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:coffee_app/feature/app/model/drink_model.dart';
+import 'package:coffee_app/feature/drink/widget/drink_card.dart';
 import 'package:coffee_app/product/padding/page_padding.dart';
+import 'package:coffee_app/product/utility/drink_model_enum.dart';
 import 'package:flutter/material.dart';
 
 class DrinkCardList extends StatelessWidget {
@@ -33,10 +35,14 @@ class DrinkCardList extends StatelessWidget {
                 Map<String, dynamic> data = document.data()! as Map<String, dynamic>;
                 return DrinkCard(
                   model: DrinkModel(
-                    name: data['name'],
-                    description: data['description'],
-                    imgName: data['imgName'],
-                    price: data['price'],
+                    id: data[DrinkProperties.id.name],
+                    name: data[DrinkProperties.name.name],
+                    description: data[DrinkProperties.description.name],
+                    imgName: data[DrinkProperties.imgName.name],
+                    price: data[DrinkProperties.price.name],
+                    isFavorite: data[DrinkProperties.isFavorite.name] as bool,
+                    isAdd: data[DrinkProperties.isAdd.name],
+                    category: data[DrinkProperties.category.name],
                   ),
                 );
               }).toList(),
@@ -44,83 +50,6 @@ class DrinkCardList extends StatelessWidget {
           ),
         );
       },
-    );
-  }
-}
-
-class DrinkCard extends StatelessWidget {
-  final CollectionReference<Map<String, dynamic>> favoritesRef = FirebaseFirestore.instance.collection("favorites");
-
-  DrinkCard({
-    Key? key,
-    required this.model,
-  }) : super(key: key);
-
-  final DrinkModel model;
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const PagePadding.all(),
-      child: Container(
-        decoration: BoxDecoration(
-          color: Colors.grey[800],
-          borderRadius: BorderRadius.circular(50),
-        ),
-        height: MediaQuery.of(context).size.height * 0.6,
-        child: Stack(
-          alignment: Alignment.bottomCenter,
-          children: [
-            Expanded(
-              child: Container(
-                decoration: BoxDecoration(
-                  color: Colors.red,
-                  borderRadius: BorderRadius.circular(50),
-                  image: DecorationImage(
-                    fit: BoxFit.cover,
-                    image: AssetImage("assets/coffee/${model.imgName}.jpg"),
-                  ),
-                ),
-              ),
-            ),
-            Padding(
-              padding: const PagePadding.all(),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Column(
-                    children: [
-                      Text(
-                        model.name ?? "",
-                        style: Theme.of(context).textTheme.headline6?.copyWith(color: Colors.grey),
-                      ),
-                      SizedBox(height: 10),
-                      Text(model.description ?? "", style: Theme.of(context).textTheme.subtitle2),
-                    ],
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        "\$${model.price}",
-                        style: const TextStyle(color: Colors.orange, fontWeight: FontWeight.bold, fontSize: 30),
-                      ),
-                      ElevatedButton(
-                        style: ElevatedButton.styleFrom(primary: Colors.orange),
-                        onPressed: () {
-                          favoritesRef.add(model.toJson(model));
-                        },
-                        child: const Icon(Icons.add),
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-            ),
-          ],
-        ),
-      ),
     );
   }
 }
