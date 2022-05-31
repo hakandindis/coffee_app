@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:coffee_app/feature/custom/widget/custom_list.dart';
 import 'package:coffee_app/feature/home/widget/header_text.dart';
+import 'package:coffee_app/feature/shopping/view/shopping_list.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -23,7 +24,7 @@ class _ShoppingViewState extends State<ShoppingView> {
       children: [
         const HeaderText(),
         const SizedBox(height: 10),
-        CustomList(stream: _stream, ref: ref),
+        ShoppingList(stream: _stream, ref: ref),
         Expanded(
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
