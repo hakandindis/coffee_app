@@ -3,7 +3,6 @@ import 'package:coffee_app/feature/app/cubit/app_cubit.dart';
 import 'package:coffee_app/feature/app/model/drink_model.dart';
 import 'package:coffee_app/product/padding/horizontal_padding.dart';
 import 'package:coffee_app/product/padding/page_padding.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -16,31 +15,6 @@ class ShoppingCard extends StatelessWidget {
 
   final CollectionReference reference;
   final DrinkModel model;
-
-  Widget favoriteIcon(bool isFavorite) {
-    return isFavorite
-        ? IconButton(
-            onPressed: () async {
-              await reference.doc(model.id).update({"isFavorite": false});
-            },
-            // ignore: prefer_const_constructors
-            icon: Icon(
-              CupertinoIcons.heart_fill,
-              color: Colors.orange,
-              size: 30,
-            ),
-          )
-        : IconButton(
-            onPressed: () async {
-              await reference.doc(model.id).update({"isFavorite": true});
-            },
-            // ignore: prefer_const_constructors
-            icon: Icon(
-              CupertinoIcons.heart,
-              color: Colors.orange,
-              size: 30,
-            ));
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -58,7 +32,9 @@ class ShoppingCard extends StatelessWidget {
                   borderRadius: BorderRadius.circular(50),
                   image: DecorationImage(
                     fit: BoxFit.cover,
-                    image: AssetImage("assets/coffee/${model.imgName}.jpg"),
+                    image: model.imgName != null
+                        ? AssetImage("assets/coffee/${model.imgName}.jpg")
+                        : AssetImage("assets/coffee/coffee1.jpg"),
                   ),
                 ),
               ),

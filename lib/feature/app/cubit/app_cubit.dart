@@ -22,12 +22,21 @@ class AppCubit extends Cubit<AppState> {
   void addDrinkToShoppingList(DrinkModel model) {
     shoppingList.add(model);
     totalPrice += model.price ?? 0;
+
+    emit(state.copyWith(price: totalPrice));
+  }
+
+  void updateTotalPrice(int value) {
+    totalPrice = value;
     emit(state.copyWith(price: totalPrice));
   }
 
   void removeDrinkFromShoppingList(DrinkModel model) {
     shoppingList.removeWhere((element) => element.id == model.id);
     totalPrice -= model.price ?? 0;
+    if (totalPrice < 0) {
+      totalPrice = 0;
+    }
     emit(state.copyWith(price: totalPrice));
   }
 
