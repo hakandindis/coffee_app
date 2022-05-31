@@ -46,11 +46,11 @@ class DrinkCard extends StatelessWidget {
                   }
                 },
                 child: model.isFavorite ?? false
-                    ? Icon(
+                    ? const Icon(
                         CupertinoIcons.heart_fill,
                         size: 40,
                       )
-                    : Icon(
+                    : const Icon(
                         CupertinoIcons.heart,
                         size: 40,
                       ),

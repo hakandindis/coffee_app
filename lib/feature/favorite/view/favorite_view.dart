@@ -1,7 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:coffee_app/feature/custom/widget/custom_list.dart';
+import 'package:coffee_app/feature/favorite/widget/favorite_list.dart';
 import 'package:coffee_app/feature/home/widget/header_text.dart';
 import 'package:flutter/material.dart';
 
@@ -18,7 +18,7 @@ class FavoriteView extends StatelessWidget {
       children: [
         HeaderText(),
         SizedBox(height: 10),
-        CustomList(stream: _favoriteStream, ref: ref),
+        FavoriteList(stream: _favoriteStream, ref: ref),
       ],
     );
   }

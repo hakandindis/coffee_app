@@ -1,11 +1,11 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:coffee_app/feature/app/model/drink_model.dart';
-import 'package:coffee_app/feature/shopping/view/shopping_card.dart';
+import 'package:coffee_app/feature/favorite/widget/favorite_card.dart';
 import 'package:coffee_app/product/utility/drink_model_enum.dart';
 import 'package:flutter/material.dart';
 
-class ShoppingList extends StatelessWidget {
-  const ShoppingList({
+class FavoriteList extends StatelessWidget {
+  const FavoriteList({
     Key? key,
     required this.ref,
     required Stream<QuerySnapshot<Object?>> stream,
@@ -33,7 +33,7 @@ class ShoppingList extends StatelessWidget {
             children: snapshot.data!.docs.map(
               (DocumentSnapshot document) {
                 Map<String, dynamic> data = document.data()! as Map<String, dynamic>;
-                return ShoppingCard(
+                return FavoriteCard(
                   reference: ref,
                   model: DrinkModel(
                     id: data[DrinkProperties.id.name],

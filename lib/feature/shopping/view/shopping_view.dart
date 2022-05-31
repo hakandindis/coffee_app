@@ -1,5 +1,4 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:coffee_app/feature/custom/widget/custom_list.dart';
 import 'package:coffee_app/feature/home/widget/header_text.dart';
 import 'package:coffee_app/feature/shopping/view/shopping_list.dart';
 import 'package:flutter/cupertino.dart';
