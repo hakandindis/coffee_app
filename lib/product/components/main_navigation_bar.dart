@@ -1,4 +1,5 @@
-import 'package:badges/badges.dart';
+// ignore_for_file: prefer_const_literals_to_create_immutables
+
 import 'package:coffee_app/feature/app/cubit/app_cubit.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -27,17 +28,8 @@ class MainNavigationBar extends StatelessWidget {
           showUnselectedLabels: false,
           items: [
             const BottomNavigationBarItem(icon: Icon(CupertinoIcons.home), label: "Home"),
-            BottomNavigationBarItem(
-              icon: BlocBuilder<AppCubit, AppState>(
-                builder: (context, state) {
-                  int count = state.coffeeCardCount;
-                  return Badge(
-                    badgeColor: Colors.orange,
-                    badgeContent: Text("$count"),
-                    child: const Icon(CupertinoIcons.shopping_cart),
-                  );
-                },
-              ),
+            const BottomNavigationBarItem(
+              icon: Icon(CupertinoIcons.shopping_cart),
               label: "Shop",
             ),
             const BottomNavigationBarItem(icon: Icon(CupertinoIcons.heart_fill), label: "favorite"),

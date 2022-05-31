@@ -19,12 +19,16 @@ class _PriceAndBuyWidget extends StatelessWidget {
           "\$${model.price}",
           style: const TextStyle(color: Colors.orange, fontWeight: FontWeight.bold, fontSize: 30),
         ),
-        ElevatedButton(
-          style: ElevatedButton.styleFrom(primary: Colors.orange),
-          onPressed: () async {
-            await favoritesRef.doc(model.id).update({"isAdd": true});
-          },
-          child: const Icon(Icons.add),
+        BlocListener<AppCubit, AppState>(
+          listener: (context, state) {},
+          child: ElevatedButton(
+            style: ElevatedButton.styleFrom(primary: Colors.orange),
+            onPressed: () async {
+              await favoritesRef.doc(model.id).update({"isAdd": true});
+              context.read<AppCubit>().addDrinkToShoppingList(model);
+            },
+            child: const Icon(Icons.add),
+          ),
         ),
       ],
     );

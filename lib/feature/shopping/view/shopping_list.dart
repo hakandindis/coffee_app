@@ -28,6 +28,7 @@ class ShoppingList extends StatelessWidget {
         }
 
         return Expanded(
+          flex: 7,
           child: ListView(
             scrollDirection: Axis.vertical,
             children: snapshot.data!.docs.map(

@@ -1,9 +1,11 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:coffee_app/feature/app/cubit/app_cubit.dart';
 import 'package:coffee_app/feature/app/model/drink_model.dart';
 import 'package:coffee_app/product/padding/horizontal_padding.dart';
 import 'package:coffee_app/product/padding/page_padding.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ShoppingCard extends StatelessWidget {
   const ShoppingCard({
@@ -13,6 +15,7 @@ class ShoppingCard extends StatelessWidget {
   }) : super(key: key);
 
   final CollectionReference reference;
+  final DrinkModel model;
 
   Widget favoriteIcon(bool isFavorite) {
     return isFavorite
@@ -39,7 +42,6 @@ class ShoppingCard extends StatelessWidget {
             ));
   }
 
-  final DrinkModel model;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -96,11 +98,16 @@ class ShoppingCard extends StatelessWidget {
                           "\$${model.price}",
                           style: const TextStyle(color: Colors.orange, fontWeight: FontWeight.bold, fontSize: 25),
                         ),
-                        favoriteIcon(model.isFavorite ?? false),
-                        ElevatedButton(
-                          style: ElevatedButton.styleFrom(primary: Colors.orange),
-                          onPressed: () {},
-                          child: const Icon(Icons.add),
+                        BlocListener<AppCubit, AppState>(
+                          listener: (context, state) {},
+                          child: ElevatedButton(
+                            style: ElevatedButton.styleFrom(primary: Colors.orange),
+                            onPressed: () {
+                              reference.doc(model.id).update({"isAdd": false});
+                              context.read<AppCubit>().removeDrinkFromShoppingList(model);
+                            },
+                            child: const Icon(Icons.delete_outline),
+                          ),
                         ),
                       ],
                     )

@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:bloc/bloc.dart';
 import 'package:coffee_app/feature/app/model/coffee_card_info.dart';
+import 'package:coffee_app/feature/app/model/drink_model.dart';
 import 'package:coffee_app/feature/route/route.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
@@ -15,15 +16,19 @@ class AppCubit extends Cubit<AppState> {
   List<CoffeeCardInfo> favoriteCartList = [];
   int totalPrice = 0;
 
-  void addShoppingCartList(CoffeeCardInfo card) {
-    shoppingCartList.add(card);
-    totalPrice += card.price ?? 0;
-    emit(state.copyWith(coffeeCardCount: shoppingCartList.length));
+  List<DrinkModel> shoppingList = [];
+  List<DrinkModel> favoriteList = [];
+
+  void addDrinkToShoppingList(DrinkModel model) {
+    shoppingList.add(model);
+    totalPrice += model.price ?? 0;
+    emit(state.copyWith(price: totalPrice));
   }
 
-  void addFavoriteCartList(CoffeeCardInfo card) {
-    favoriteCartList.add(card);
-    inspect(favoriteCartList);
+  void removeDrinkFromShoppingList(DrinkModel model) {
+    shoppingList.removeWhere((element) => element.id == model.id);
+    totalPrice -= model.price ?? 0;
+    emit(state.copyWith(price: totalPrice));
   }
 
   void changePage(BuildContext context, int index) {
@@ -45,5 +50,16 @@ class AppCubit extends Cubit<AppState> {
         emit(state.copyWith(currentPageIndex: index));
         break;
     }
+  }
+
+  void addShoppingCartList(CoffeeCardInfo card) {
+    shoppingCartList.add(card);
+    totalPrice += card.price ?? 0;
+    emit(state.copyWith(price: totalPrice));
+  }
+
+  void addFavoriteCartList(CoffeeCardInfo card) {
+    favoriteCartList.add(card);
+    inspect(favoriteCartList);
   }
 }
