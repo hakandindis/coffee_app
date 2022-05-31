@@ -1,10 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:coffee_app/feature/app/cubit/app_cubit.dart';
 import 'package:coffee_app/feature/app/model/drink_model.dart';
-import 'package:coffee_app/feature/shopping/view/shopping_card.dart';
+import 'package:coffee_app/feature/shopping/widget/shopping_card.dart';
 import 'package:coffee_app/product/utility/drink_model_enum.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ShoppingList extends StatelessWidget {
   const ShoppingList({

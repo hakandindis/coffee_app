@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:coffee_app/feature/home/widget/header_text.dart';
-import 'package:coffee_app/feature/shopping/view/price_and_order.dart';
-import 'package:coffee_app/feature/shopping/view/shopping_list.dart';
+import 'package:coffee_app/feature/shopping/widget/price_and_order.dart';
+import 'package:coffee_app/feature/shopping/widget/shopping_list.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
