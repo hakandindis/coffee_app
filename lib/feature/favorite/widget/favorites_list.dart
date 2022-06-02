@@ -28,7 +28,7 @@ class FavoritesList extends StatelessWidget {
             scrollDirection: Axis.vertical,
             children: snapshot.data!.docs.map((DocumentSnapshot document) {
               Map<String, dynamic> data = document.data()! as Map<String, dynamic>;
-              return Container(
+              return SizedBox(
                 height: MediaQuery.of(context).size.height * 0.3,
                 child: Padding(
                   padding: const PagePadding.all(),

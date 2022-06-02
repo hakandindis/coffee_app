@@ -19,7 +19,7 @@ class FavoriteCard extends StatelessWidget {
   final DrinkModel model;
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       height: MediaQuery.of(context).size.height * 0.3,
       child: Padding(
         padding: const PagePadding.all(),

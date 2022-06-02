@@ -18,7 +18,7 @@ class ShoppingCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       height: MediaQuery.of(context).size.height * 0.3,
       child: Padding(
         padding: const PagePadding.all(),
@@ -34,7 +34,7 @@ class ShoppingCard extends StatelessWidget {
                     fit: BoxFit.cover,
                     image: model.imgName != null
                         ? AssetImage("assets/coffee/${model.imgName}.jpg")
-                        : AssetImage("assets/coffee/coffee1.jpg"),
+                        : const AssetImage("assets/coffee/coffee1.jpg"),
                   ),
                 ),
               ),

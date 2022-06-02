@@ -32,7 +32,6 @@ class MyApp extends StatelessWidget {
             centerTitle: true,
           ),
         ),
-        // home: HomePage(),
         initialRoute: AppRoutes.drinkPage,
         routes: AppRoutes.route(),
       ),
