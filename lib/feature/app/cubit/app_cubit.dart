@@ -1,7 +1,4 @@
-import 'dart:developer';
-
 import 'package:bloc/bloc.dart';
-import 'package:coffee_app/feature/app/model/coffee_card_info.dart';
 import 'package:coffee_app/feature/app/model/drink_model.dart';
 import 'package:coffee_app/feature/route/route.dart';
 import 'package:equatable/equatable.dart';
@@ -12,8 +9,6 @@ part 'app_state.dart';
 class AppCubit extends Cubit<AppState> {
   AppCubit() : super(const AppState());
 
-  List<CoffeeCardInfo> shoppingCartList = [];
-  List<CoffeeCardInfo> favoriteCartList = [];
   int totalPrice = 0;
 
   List<DrinkModel> shoppingList = [];
@@ -59,16 +54,5 @@ class AppCubit extends Cubit<AppState> {
         emit(state.copyWith(currentPageIndex: index));
         break;
     }
-  }
-
-  void addShoppingCartList(CoffeeCardInfo card) {
-    shoppingCartList.add(card);
-    totalPrice += card.price ?? 0;
-    emit(state.copyWith(price: totalPrice));
-  }
-
-  void addFavoriteCartList(CoffeeCardInfo card) {
-    favoriteCartList.add(card);
-    inspect(favoriteCartList);
   }
 }
