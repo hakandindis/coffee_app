@@ -59,6 +59,9 @@ dependencies:
   hive: ^2.1.0
   hive_flutter: ^1.1.0
 
+  #style
+  tab_indicator_styler: ^2.0.0
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

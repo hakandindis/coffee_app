@@ -42,19 +42,21 @@ class PriceAndOrder extends StatelessWidget {
                   style: ElevatedButton.styleFrom(primary: Colors.orange),
                   onPressed: () {
                     drinkList = context.read<AppCubit>().shoppingList;
-                    List<String> drinkNames = [];
+                    if (drinkList.isNotEmpty) {
+                      List<String> drinkNames = [];
 
-                    for (var element in drinkList) {
-                      ref.doc(element.id).update({"isAdd": false});
-                      drinkNames.add(element.name ?? "");
+                      for (var element in drinkList) {
+                        ref.doc(element.id).update({"isAdd": false});
+                        drinkNames.add(element.name ?? "");
+                      }
+
+                      OrderModel orderModel = OrderModel(drinkNames: drinkNames, totalPrice: totalPrice);
+                      orderRef.add(orderModel.toJson(orderModel));
+
+                      drinkNames.clear();
+                      context.read<AppCubit>().shoppingList.clear();
+                      context.read<AppCubit>().updateTotalPrice(0);
                     }
-
-                    OrderModel orderModel = OrderModel(drinkNames: drinkNames, totalPrice: totalPrice);
-                    orderRef.add(orderModel.toJson(orderModel));
-
-                    drinkNames.clear();
-                    context.read<AppCubit>().shoppingList.clear();
-                    context.read<AppCubit>().updateTotalPrice(0);
                   },
                   child: const Icon(CupertinoIcons.cart),
                 ),
