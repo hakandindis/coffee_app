@@ -2,7 +2,7 @@
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:coffee_app/feature/favorite/widget/favorite_list.dart';
-import 'package:coffee_app/feature/home/widget/header_text.dart';
+import 'package:coffee_app/product/components/header_text.dart';
 import 'package:flutter/material.dart';
 
 class FavoriteView extends StatelessWidget {

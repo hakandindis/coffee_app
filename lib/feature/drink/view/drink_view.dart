@@ -2,7 +2,7 @@
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:coffee_app/feature/drink/widget/drink_card_list.dart';
-import 'package:coffee_app/feature/home/widget/header_text.dart';
+import 'package:coffee_app/product/components/header_text.dart';
 import 'package:coffee_app/product/components/main_app_bar.dart';
 import 'package:coffee_app/product/components/main_navigation_bar.dart';
 import 'package:flutter/material.dart';
