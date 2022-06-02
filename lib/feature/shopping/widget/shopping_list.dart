@@ -1,7 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:coffee_app/feature/app/model/drink_model.dart';
 import 'package:coffee_app/feature/shopping/widget/shopping_card.dart';
-import 'package:coffee_app/product/utility/drink_model_enum.dart';
 import 'package:flutter/material.dart';
 
 class ShoppingList extends StatelessWidget {
@@ -36,16 +35,7 @@ class ShoppingList extends StatelessWidget {
                 Map<String, dynamic> data = document.data()! as Map<String, dynamic>;
                 return ShoppingCard(
                   reference: ref,
-                  model: DrinkModel(
-                    id: data[DrinkProperties.id.name],
-                    name: data[DrinkProperties.name.name],
-                    imgName: data[DrinkProperties.imgName.name],
-                    description: data[DrinkProperties.description.name],
-                    price: data[DrinkProperties.price.name],
-                    isFavorite: data[DrinkProperties.isFavorite.name],
-                    isAdd: data[DrinkProperties.isAdd.name],
-                    category: data[DrinkProperties.category.name],
-                  ),
+                  model: DrinkModel.fromJson(data),
                 );
               },
             ).toList(),
