@@ -25,18 +25,17 @@ class DrinkCardList extends StatelessWidget {
           return const Text("Loading");
         }
 
-        return Expanded(
-          child: Padding(
-            padding: const PagePadding.all(),
-            child: ListView(
-              scrollDirection: Axis.vertical,
-              children: snapshot.data!.docs.map((DocumentSnapshot document) {
-                Map<String, dynamic> data = document.data()! as Map<String, dynamic>;
-                return DrinkCard(
-                  model: DrinkModel.fromJson(data),
-                );
-              }).toList(),
-            ),
+        return Padding(
+          padding: const PagePadding.all(),
+          child: ListView(
+            // shrinkWrap: true,
+            scrollDirection: Axis.vertical,
+            children: snapshot.data!.docs.map((DocumentSnapshot document) {
+              Map<String, dynamic> data = document.data()! as Map<String, dynamic>;
+              return DrinkCard(
+                model: DrinkModel.fromJson(data),
+              );
+            }).toList(),
           ),
         );
       },
